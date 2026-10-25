@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#171027">
+  <meta name="description" content="A little light, a lot of love. Wishing you a very happy Diwali!">
+  <title>Happy Diwali ✨</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --night: #171027;
+      --gold: #ffd98a;
+      --orange: #ff9d52;
+      --cream: #fff2d6;
+      --muted: #d7c8d9;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at 50% 105%, rgb(153 61 83 / 28%), transparent 48%),
+        radial-gradient(ellipse at 50% 48%, #30203e 0%, var(--night) 68%);
+      color: var(--cream);
+      font-family: Georgia, "Times New Roman", serif;
+    }
+
+    body::before {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background-image: radial-gradient(1px 1px at 12% 22%, #fff7d6 45%, transparent),
+        radial-gradient(2px 2px at 82% 15%, #ffd98a 45%, transparent),
+        radial-gradient(1px 1px at 71% 69%, #fff7d6 45%, transparent),
+        radial-gradient(1px 1px at 24% 77%, #ffd98a 45%, transparent),
+        radial-gradient(2px 2px at 91% 49%, #fff7d6 45%, transparent),
+        radial-gradient(1px 1px at 43% 12%, #ffd98a 45%, transparent);
+      background-size: 360px 300px;
+      content: "";
+      opacity: .55;
+      pointer-events: none;
+    }
+
+    .page {
+      position: relative;
+      display: grid;
+      min-height: 100vh;
+      place-items: center;
+      padding: 5rem 1.5rem 9rem;
+      isolation: isolate;
+    }
+
+    .greeting {
+      width: min(100%, 690px);
+      text-align: center;
+      animation: arrive 1s ease-out both;
+    }
+
+    .eyebrow {
+      margin: 0 0 1.2rem;
+      color: var(--gold);
+      font-family: Arial, sans-serif;
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .34em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      color: var(--gold);
+      font-size: clamp(3.6rem, 12vw, 7.5rem);
+      font-weight: 400;
+      letter-spacing: -.065em;
+      line-height: .95;
+      text-shadow: 0 0 38px rgb(255 174 73 / 24%);
+    }
+
+    h1 span {
+      display: block;
+      color: #fff3dc;
+      font-size: .53em;
+      letter-spacing: .01em;
+      line-height: 1.5;
+    }
+
+    .ornament {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .85rem;
+      margin: 1.6rem auto;
+      color: var(--orange);
+      font-size: 1.1rem;
+    }
+
+    .ornament::before,
+    .ornament::after {
+      width: 58px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--orange));
+      content: "";
+    }
+
+    .ornament::after {
+      transform: rotate(180deg);
+    }
+
+    .message {
+      max-width: 510px;
+      margin: 0 auto;
+      color: var(--muted);
+      font-size: clamp(1.05rem, 2.7vw, 1.25rem);
+      line-height: 1.8;
+    }
+
+    .message strong {
+      color: var(--cream);
+      font-weight: 400;
+    }
+
+    .celebrate {
+      margin-top: 2rem;
+      padding: .95rem 1.65rem;
+      border: 1px solid rgb(255 217 138 / 65%);
+      border-radius: 999px;
+      background: rgb(255 217 138 / 8%);
+      color: var(--gold);
+      cursor: pointer;
+      font: 700 .78rem Arial, sans-serif;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+      transition: background .2s ease, transform .2s ease, box-shadow .2s ease;
+    }
+
+    .celebrate:hover {
+      transform: translateY(-2px);
+      background: rgb(255 217 138 / 17%);
+      box-shadow: 0 0 25px rgb(255 174 73 / 18%);
+    }
+
+    .celebrate:focus-visible {
+      outline: 2px solid white;
+      outline-offset: 4px;
+    }
+
+    .diyas {
+      position: absolute;
+      right: 0;
+      bottom: 2rem;
+      left: 0;
+      display: flex;
+      justify-content: center;
+      gap: clamp(2rem, 11vw, 6.5rem);
+      pointer-events: none;
+    }
+
+    .diya {
+      position: relative;
+      width: 62px;
+      height: 27px;
+      border-radius: 0 0 50% 50%;
+      background: linear-gradient(180deg, #f3a75c, #a94245);
+      box-shadow: 0 8px 25px rgb(255 112 47 / 22%);
+    }
+
+    .diya::before {
+      position: absolute;
+      top: -19px;
+      left: 50%;
+      width: 13px;
+      height: 22px;
+      border-radius: 90% 5% 90% 10%;
+      background: linear-gradient(145deg, #fff8bd 5%, #ffd354 47%, #ff7438 88%);
+      box-shadow: 0 0 19px 5px rgb(255 172 66 / 57%);
+      content: "";
+      transform: translateX(-50%) rotate(45deg);
+      transform-origin: 50% 90%;
+      animation: flicker 1.25s ease-in-out infinite alternate;
+    }
+
+    .diya:nth-child(2)::before {
+      animation-delay: -.5s;
+    }
+
+    .diya:nth-child(3)::before {
+      animation-delay: -.85s;
+    }
+
+    .spark {
+      position: fixed;
+      z-index: 3;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      box-shadow: 0 0 12px 3px rgb(255 194 98 / 65%);
+      pointer-events: none;
+      animation: sparkle 1.5s ease-out forwards;
+    }
+
+    @keyframes arrive {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes flicker {
+      from { transform: translateX(-50%) rotate(40deg) scale(.94); }
+      to { transform: translateX(-50%) rotate(50deg) scale(1.06); }
+    }
+
+    @keyframes sparkle {
+      to { opacity: 0; transform: translate(var(--drift-x), var(--drift-y)) scale(.1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="greeting" aria-labelledby="greeting-title">
+      <p class="eyebrow">A festival of light</p>
+      <h1 id="greeting-title">Happy <span>Diwali</span></h1>
+      <div class="ornament" aria-hidden="true">✦</div>
+      <p class="message">
+        May the glow of every diya bring warmth to your home,
+        <strong>joy to your heart</strong>, and a little extra magic to the year ahead.
+        Wishing you and your loved ones a beautiful celebration.
+      </p>
+      <button class="celebrate" type="button">✨ &nbsp; Celebrate</button>
+    </section>
+
+    <div class="diyas" aria-hidden="true">
+      <span class="diya"></span>
+      <span class="diya"></span>
+      <span class="diya"></span>
+    </div>
+  </main>
+  <script>
+    const celebrateButton = document.querySelector(".celebrate");
+
+    celebrateButton.addEventListener("click", () => {
+      for (let index = 0; index < 32; index += 1) {
+        const spark = document.createElement("span");
+        const angle = (Math.PI * 2 * index) / 32;
+        const distance = 70 + Math.random() * 170;
+
+        spark.className = "spark";
+        spark.style.left = `${window.innerWidth / 2}px`;
+        spark.style.top = `${window.innerHeight / 2}px`;
+        spark.style.setProperty("--drift-x", `${Math.cos(angle) * distance}px`);
+        spark.style.setProperty("--drift-y", `${Math.sin(angle) * distance}px`);
+        document.body.append(spark);
+        spark.addEventListener("animationend", () => spark.remove(), { once: true });
+      }
+    });
+  </script>
+</body>
+</html>
